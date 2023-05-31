@@ -6,6 +6,11 @@
     flex-wrap: wrap;
 }
 
+.pokeHeading {
+    margin-top: 50px;
+    text-align: center;
+}
+
 .pokeCard {
     width: 200px;
     text-align: center;

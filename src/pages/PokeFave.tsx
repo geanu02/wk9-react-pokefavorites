@@ -13,7 +13,10 @@ interface PokeObj {
 export default function PokeFave({ pokeList }: Pokefaveable) {
     
     return (
+        <>
+        <h2 className="pokeHeading">Today's Favorite Pokemon</h2>
         <div className="pokeContainer">
+            
             { pokeList.map(pokemon => {
                 return <Pokecard
                             key={pokemon.id}
@@ -23,5 +26,6 @@ export default function PokeFave({ pokeList }: Pokefaveable) {
                         />
             }) }
         </div>
+        </>
     )
 }
