@@ -1,4 +1,4 @@
-import Pokecard from "../components/Pokecard";
+import Pokecard from '../components/Pokecard'
 
 interface Pokefaveable {
     pokeList: PokeObj[]

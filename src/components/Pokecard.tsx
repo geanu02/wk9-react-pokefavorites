@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card"
+import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
 
 interface Pokecardable {
@@ -18,8 +18,9 @@ export default function Pokecard(props: Pokecardable) {
         >
           <Card.Header>{props.id}</Card.Header>
           <Card.Body>
-            <Card.Title>{props.pokeName}</Card.Title>
+            
             <Image src={props.pokeImg} />
+            <Card.Title>{props.pokeName}</Card.Title>
           </Card.Body>
         </Card>
     )

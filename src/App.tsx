@@ -1,5 +1,5 @@
-import NavBar from "./components/Navbar"
-import PokeFave from "./pages/PokeFave"
+import NavBar from './components/NavBar'
+import PokeFave from './pages/PokeFave'
 
 function App() {
 
