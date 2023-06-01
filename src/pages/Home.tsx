@@ -1,12 +1,12 @@
 import NavBar from "../components/NavBar"
 
-export default function About() {
+export default function Home() {
 
     return (
         <>
             <NavBar />
             <div>
-                About Pokemon Favorites!
+                Welcome to PokeFavorites!
 
             </div>
         </>

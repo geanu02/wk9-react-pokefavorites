@@ -1,17 +1,38 @@
-import Pokecard from '../components/Pokecard'
+import { useState, useEffect } from 'react'
+import Pokecard, { Pokecardable } from '../components/Pokecard'
+import { PokemonClient } from 'pokenode-ts';
 
-interface Pokefaveable {
-    pokeList: PokeObj[]
-}
-
-interface PokeObj {
-    id: number,
-    pokeName: string,
-    pokeImg: string
-}
-
-export default function PokeFave({ pokeList }: Pokefaveable) {
+export default function PokeFave() {
     
+    const [ pokeList, setPokeList ] = useState<Pokecardable[]>([])
+    const randomNumbers: number[] = Array.from({length: 6}, () => Math.floor(Math.random() * 1010))
+    console.log(randomNumbers)
+
+    useEffect(() => {
+        (async () => {
+            const api = new PokemonClient();
+            for (let num of randomNumbers) {
+                await api
+                    .getPokemonById(num)
+                    .then((data) => {
+                        console.log(data.name)
+                        let arr: Pokecardable = { 
+                            id: num, 
+                            pokeName: data.name, 
+                            pokeImg: data.sprites.front_default || ''
+                        }
+                        setPokeList(prevState => [...prevState, arr ])
+                    })
+                    .catch((error) => console.error(error))
+            }
+            
+      })()
+    },[])
+    // Sprites
+    // data.sprites.other.official_artwork.front_default
+    // data.sprites.front_default
+    // data.sprites.front_default
+
     return (
         <>
         <h2 className="pokeHeading">Today's Favorite Pokemon</h2>

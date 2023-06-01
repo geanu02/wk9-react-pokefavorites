@@ -1,21 +1,27 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import PokeFave from './pages/PokeFave'
+import About from './pages/About'
+import Home from './pages/Home'
+import PokePage from './pages/PokePage'
 
 function App() {
-
-  const pokeArray = [
-    { id: 361, pokeName: "Snorunt", pokeImg: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/361.png" },
-    { id: 574, pokeName: "Gothita", pokeImg: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/574.png" },
-    { id: 486, pokeName: "Regigigas", pokeImg: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/486.png" },
-    { id: 503, pokeName: "Samurott", pokeImg: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/503.png" },
-    { id: 76, pokeName: "Golem", pokeImg: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/76.png" },
-    { id: 376, pokeName: "Metang", pokeImg: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/375.png" },
-  ]
 
   return (
     <>
       <NavBar />
-      <PokeFave pokeList={pokeArray} />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={ <Home /> } />
+          <Route path='/pokefave' element={ <PokeFave /> } />
+          <Route path='/about' element={ <About /> } />
+          <Route path='/pokemon/:pokeid' element={ <PokePage /> } />
+          <Route path='*' element={ <Navigate to='/' /> } />
+
+
+        </Routes>
+      </BrowserRouter>
+      <PokeFave />
     </>
   )
 }
