@@ -6,16 +6,14 @@ export default function PokeFave() {
     
     const [ pokeList, setPokeList ] = useState<Pokecardable[]>([])
     const randomNumbers: number[] = Array.from({length: 6}, () => Math.floor(Math.random() * 1010))
-    console.log(randomNumbers)
 
     useEffect(() => {
         (async () => {
-            const api = new PokemonClient();
+            const api = new PokemonClient()
             for (let num of randomNumbers) {
                 await api
                     .getPokemonById(num)
                     .then((data) => {
-                        console.log(data.name)
                         let arr: Pokecardable = { 
                             id: num, 
                             pokeName: data.name, 

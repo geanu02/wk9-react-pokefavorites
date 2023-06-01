@@ -15,10 +15,8 @@ function App() {
           <Route path='/' element={ <Home /> } />
           <Route path='/pokefave' element={ <PokeFave /> } />
           <Route path='/about' element={ <About /> } />
-          <Route path='/pokemon/:pokeid' element={ <PokePage /> } />
+          <Route path='/pokemon/:pokeparam' element={ <PokePage /> } />
           <Route path='*' element={ <Navigate to='/' /> } />
-
-
         </Routes>
       </BrowserRouter>
       <PokeFave />
