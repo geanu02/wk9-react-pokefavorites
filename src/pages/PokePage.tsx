@@ -8,27 +8,27 @@ import { Pokecardable } from '../components/Pokecard'
 export default function PokePage() {
     const variant = 'Dark'
 
-    const [ pokemon, setPokemon ] = useState<Pokecardable>()
+    const [ pokemon, setPokemon ] = useState<Pokecardable>({id: 1, pokeName: 'Bulbasaur', pokeImg: ""})
     const { pokeparam } = useParams()
-    const pokeId: number = parseInt(pokeparam!)
-    console.log(pokeId, typeof pokeId)
-
+    let pokeId: number = 1
+    if ( pokeparam !== undefined ) {
+      pokeId = +pokeparam;
+    }
     useEffect(() => {
       (async () => {
           const api2 = new PokemonClient()
           await api2
               .getPokemonById(pokeId)
               .then((data) => {
-                  let poke: Pokecardable = { 
+                  setPokemon({ 
                       id: pokeId, 
                       pokeName: data.name, 
-                      pokeImg: data.sprites.back_default || ''
-                  }
-                  setPokemon(poke)
+                      pokeImg: data.sprites.front_default || ''
+                  })
               })
               .catch((error) => console.error(error))
       })()
-    },[])
+    },[ pokemon ])
 
     return (
       <>
@@ -38,10 +38,10 @@ export default function PokePage() {
           text="light"
           className="mb-2 pokeCard"
         >
-          <Card.Header>{pokemon!.id}</Card.Header>
+          <Card.Header>{pokemon.id}</Card.Header>
           <Card.Body>
-            <Image src={pokemon!.pokeImg} />
-            <Card.Title>{pokemon!.pokeName}</Card.Title>
+            <Image src={pokemon.pokeImg} />
+            <Card.Title>{pokemon.pokeName}</Card.Title>
           </Card.Body>
         </Card>
       </>

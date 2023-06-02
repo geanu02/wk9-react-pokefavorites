@@ -23,7 +23,6 @@ export default function PokeFave() {
                     })
                     .catch((error) => console.error(error))
             }
-            
       })()
     },[])
     // Sprites
@@ -33,18 +32,18 @@ export default function PokeFave() {
 
     return (
         <>
-        <h2 className="pokeHeading">Today's Favorite Pokemon</h2>
-        <div className="pokeContainer">
-            
-            { pokeList.map(pokemon => {
-                return <Pokecard
-                            key={pokemon.id}
-                            id={pokemon.id}
-                            pokeName={pokemon.pokeName}
-                            pokeImg={pokemon.pokeImg}
-                        />
-            }) }
-        </div>
+            <h2 className="pokeHeading">Today's Favorite Pokemon</h2>
+            <div className="pokeContainer">
+                
+                { pokeList.map(pokemon => {
+                    return <Pokecard
+                                key={pokemon.id}
+                                id={pokemon.id}
+                                pokeName={pokemon.pokeName}
+                                pokeImg={pokemon.pokeImg}
+                            />
+                }) }
+            </div>
         </>
     )
 }
