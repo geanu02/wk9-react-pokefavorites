@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { PokeContext } from "../contexts/PokeProvider"
+import Capitalize from "../functions/capitalize"
 
 export default function Home() {
 
@@ -34,7 +35,7 @@ export default function Home() {
             {   
                 user.token
                 ? 
-                `Welcome to PokeFavorites, ${user.username}!` 
+                `Welcome to PokeFavorites, ${Capitalize(user.username)}!` 
                 : 
                 `Welcome to PokeFavorites!`
             }

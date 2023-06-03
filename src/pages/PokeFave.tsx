@@ -17,7 +17,8 @@ export default function PokeFave() {
                         let arr: Pokecardable = { 
                             id: num, 
                             pokeName: data.name, 
-                            pokeImg: data.sprites.front_default || ''
+                            pokeImg: data.sprites.front_default || '',
+                            add: true
                         }
                         setPokeList(prevState => [...prevState, arr ])
                     })
@@ -41,6 +42,7 @@ export default function PokeFave() {
                                 id={pokemon.id}
                                 pokeName={pokemon.pokeName}
                                 pokeImg={pokemon.pokeImg}
+                                add={true}
                             />
                 }) }
             </div>

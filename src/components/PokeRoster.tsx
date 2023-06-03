@@ -10,7 +10,12 @@ export default function PokeRoster() {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`${base_api_url}/${user.username}/pokemon`)
+            const res = await fetch(`${base_api_url}/${user.username}/pokemon`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': `Bearer ${user.token || localStorage.getItem('token')?.replaceAll('"', "")}`
+                }
+            })
             if (res.ok) {
                 const data = await res.json()
                 console.log(data)
@@ -35,6 +40,7 @@ export default function PokeRoster() {
                                 id={pokemon.id}
                                 pokeName={pokemon.pokeName}
                                 pokeImg={pokemon.pokeImg}
+                                add={false}
                             />
                 }) 
                 }

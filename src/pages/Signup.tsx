@@ -16,7 +16,7 @@ export default function Signup() {
 
     async function handleSignupForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        // endpoint on pokefave flask-app: /verify-trainer
+        // endpoint on pokefave flask-app: /register-trainer
         const res = await fetch(`${base_api_url}/register-trainer`, {
             method: 'POST',
             headers: {
