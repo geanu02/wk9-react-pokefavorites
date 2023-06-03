@@ -4,24 +4,30 @@ import { PokeContext } from "../contexts/PokeProvider"
 
 const base_api_url = import.meta.env.VITE_APP_BASE_API
 
-export default function Signin() {
+export default function Signup() {
 
-    const usernameField = useRef<HTMLInputElement>(null)
+    const emailField = useRef<HTMLInputElement>(null)
+    const firstnameField = useRef<HTMLInputElement>(null)
+    const lastnameField = useRef<HTMLInputElement>(null)
     const passwordField = useRef<HTMLInputElement>(null)
+    const usernameField = useRef<HTMLInputElement>(null)
     const { user, setUser } = useContext(PokeContext)
     const navigate = useNavigate()
 
-    async function handleLoginForm(e: React.FormEvent<HTMLFormElement>) {
+    async function handleSignupForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         // endpoint on pokefave flask-app: /verify-trainer
-        const res = await fetch(`${base_api_url}/verify-trainer`, {
+        const res = await fetch(`${base_api_url}/register-trainer`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: usernameField.current?.value,
-                password: passwordField.current?.value
+                "email": emailField.current?.value,
+                "first_name": firstnameField.current?.value,
+                "last_name": lastnameField.current?.value,
+                "username": usernameField.current?.value,
+                "password": passwordField.current?.value
             })
         })
         if (res.ok) {
@@ -33,6 +39,8 @@ export default function Signin() {
                 token: data[0].token
             })
             console.log(user)
+        } else {
+            console.log(await res.json())
         }
     }
 
@@ -58,15 +66,24 @@ export default function Signin() {
 
     return (
         <div>
-            <h2 className="LoginHeader">Login Page</h2>
-            <form onSubmit={handleLoginForm}>
+            <h2 className="LoginHeader">Sign Up</h2>
+            <form onSubmit={handleSignupForm}>
+                <label>Email:<br />
+                    <input type="email" ref={emailField} />
+                </label><br /><br />
+                <label>First Name:<br />
+                    <input type="text" ref={firstnameField} />
+                </label><br /><br />
+                <label>Last Name:<br />
+                    <input type="text" ref={lastnameField} />
+                </label><br /><br />
                 <label>Username:<br />
                     <input type="text" ref={usernameField} />
                 </label><br /><br />
                 <label>Password:<br />
                     <input type="password" ref={passwordField} />
                 </label><br /><br />
-                <button>Sign In</button>
+                <button>Sign Up</button>
             </form>
         </div>
     )
