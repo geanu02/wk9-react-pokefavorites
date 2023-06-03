@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
 // import { Link } from 'react-router-dom'
@@ -9,6 +10,9 @@ export interface Pokecardable {
 }
 
 export default function Pokecard(props: Pokecardable) {
+
+  
+
   const variant = 'Dark'
   return (
     <>
@@ -23,6 +27,7 @@ export default function Pokecard(props: Pokecardable) {
         <Card.Body>
           <Image src={props.pokeImg} />
           <Card.Title>{props.pokeName}</Card.Title>
+          <Button onClick={handleClick}>Favorite!</Button>
         </Card.Body>
       </Card>
     </>
