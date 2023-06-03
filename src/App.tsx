@@ -7,6 +7,7 @@ import PokePage from './pages/PokePage'
 import Signin from './pages/Signin'
 import Signout from './components/Signout'
 import PokeRoster from './components/PokeRoster'
+import Signup from './pages/Signup'
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
           <Route path='/pokeroster' element={ <PokeRoster /> } />
           <Route path='/about' element={ <About /> } />
           <Route path='/pokemon/:pokeparam' element={ <PokePage /> } />
+
+          <Route path='/signup' element={ <Signup />} />
           <Route path='/signin' element={ <Signin />} />
           <Route path='/signout' element={ <Signout />} />
           <Route path='*' element={ <Navigate to='/' /> } />

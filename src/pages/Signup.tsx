@@ -50,17 +50,19 @@ export default function Signup() {
             localStorage.setItem('username', JSON.stringify(user.username))
             navigate('/') 
         }
-        if (localStorage.getItem('token')) {
-            const strToken = localStorage.getItem('token')
-            const strUsername = localStorage.getItem('username')
-            if (strToken && strUsername) {
+        if (!user.token || localStorage.getItem('token')) {
+            const storedToken = localStorage.getItem('token')
+            const storedUserName = localStorage.getItem('username')
+
+            if (storedToken && storedUserName && !user.token) {
                 setUser({
                     loggedIn: true, 
-                    username: strUsername, 
-                    token: strToken
+                    token: storedToken.replaceAll('"', ""), 
+                    username: storedUserName.replaceAll('"', "")
                 })
-                navigate('/')
+            
             }
+            navigate('/')
         }
     },[user])
 

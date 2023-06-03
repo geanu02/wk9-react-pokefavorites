@@ -5,7 +5,7 @@ import { PokemonClient } from 'pokenode-ts';
 export default function PokeFave() {
     
     const [ pokeList, setPokeList ] = useState<Pokecardable[]>([])
-    const randomNumbers: number[] = Array.from({length: 6}, () => Math.floor(Math.random() * 1010))
+    const randomNumbers: number[] = Array.from({length: 6}, () => Math.floor(Math.random() * 1009) + 1)
 
     useEffect(() => {
         (async () => {

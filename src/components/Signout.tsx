@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
 import { PokeContext } from '../contexts/PokeProvider'
 
-export default function Logout() {
+export default function Signout() {
 
     const { setUser } = useContext(PokeContext)
     const navigate = useNavigate()
@@ -14,6 +14,8 @@ export default function Logout() {
             username: "",
             token: ""
         })
+        localStorage.removeItem('token')
+        localStorage.removeItem('username')
         navigate('/signin')
     }, [])
 

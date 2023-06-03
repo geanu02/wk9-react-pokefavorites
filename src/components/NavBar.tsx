@@ -8,6 +8,7 @@ import { PokeContext } from '../contexts/PokeProvider'
 export default function NavBar() {
 
     const { user } = useContext(PokeContext)
+    
     return (
         <Navbar bg="secondary" variant="light">
           <Navbar.Brand as={NavLink} to='/' >PokeFavorites</Navbar.Brand>
@@ -23,8 +24,10 @@ export default function NavBar() {
                   <Nav.Link as={NavLink} to='/signout'>Sign Out</Nav.Link>
                 </>
               ) : (
-                <Nav.Link as={NavLink} to='/signin'>Sign In</Nav.Link>
-                
+                <>
+                  <Nav.Link as={NavLink} to='/signin'>Sign In</Nav.Link>
+                  <Nav.Link as={NavLink} to='/signup'>Sign Up</Nav.Link>
+                </>
               )
             }
           </Nav>
