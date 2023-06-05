@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
 import { PokeContext } from '../contexts/PokeProvider';
 import { useContext } from 'react';
-import Capitalize from '../functions/Capitalize';
 // import { Link } from 'react-router-dom'
 
 export interface Pokecardable {
@@ -14,6 +13,11 @@ export interface Pokecardable {
 }
 
 const base_api_url = import.meta.env.VITE_APP_BASE_API
+
+function capitalize(str: string) {
+  const str2 = str.charAt(0).toUpperCase() + str.slice(1);
+  return str2
+}
 
 export default function Pokecard(props: Pokecardable) {
 
@@ -31,7 +35,7 @@ export default function Pokecard(props: Pokecardable) {
         body: JSON.stringify({
             username: user.username,
             id: props.id,
-            pokeName: Capitalize(props.pokeName),
+            pokeName: capitalize(props.pokeName),
             pokeImg: props.pokeImg
         })
     })
@@ -54,7 +58,7 @@ export default function Pokecard(props: Pokecardable) {
         <Card.Header>{props.id}</Card.Header>
         <Card.Body>
           <Image src={props.pokeImg} />
-          <Card.Title>{Capitalize(props.pokeName)}</Card.Title>
+          <Card.Title>{capitalize(props.pokeName)}</Card.Title>
           {
             user.token && props.add ?
             <Button onClick={handleAdd}>Favorite!</Button> :
