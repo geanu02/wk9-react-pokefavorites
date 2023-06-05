@@ -8,7 +8,7 @@ import { Pokecardable } from '../components/Pokecard'
 export default function PokePage() {
     const variant = 'Dark'
 
-    const [ pokemon, setPokemon ] = useState<Pokecardable>({id: 1, pokeName: 'Bulbasaur', pokeImg: ""})
+    const [ pokemon, setPokemon ] = useState<Pokecardable>({id: 1, pokeName: 'Bulbasaur', pokeImg: "", add: true})
     const { pokeparam } = useParams()
     let pokeId: number = 1
     if ( pokeparam !== undefined ) {
@@ -23,7 +23,8 @@ export default function PokePage() {
                   setPokemon({ 
                       id: pokeId, 
                       pokeName: data.name, 
-                      pokeImg: data.sprites.front_default || ''
+                      pokeImg: data.sprites.front_default || '',
+                      add: true
                   })
               })
               .catch((error) => console.error(error))
