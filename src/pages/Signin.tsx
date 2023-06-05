@@ -40,7 +40,7 @@ export default function Signin() {
             localStorage.setItem('username', JSON.stringify(user.username))
             navigate('/') 
         }
-        if (!user.token || localStorage.getItem('token')) {
+        if (user.token || localStorage.getItem('token')) {
             const storedToken = localStorage.getItem('token')
             const storedUserName = localStorage.getItem('username')
 
@@ -52,7 +52,7 @@ export default function Signin() {
                 })
             
             }
-            navigate('/')
+            navigate('/pokeroster')
         }
     },[user])
 

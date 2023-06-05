@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Image from 'react-bootstrap/Image'
 import { PokeContext } from '../contexts/PokeProvider';
 import { useContext } from 'react';
-import Capitalize from '../functions/capitalize';
+import Capitalize from '../functions/Capitalize';
 // import { Link } from 'react-router-dom'
 
 export interface Pokecardable {
