@@ -50,7 +50,6 @@ export default function Signin() {
                     token: storedToken.replaceAll('"', ""), 
                     username: storedUserName.replaceAll('"', "")
                 })
-            
             }
             navigate('/pokeroster')
         }
